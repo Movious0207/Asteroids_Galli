@@ -12,9 +12,11 @@ int main()
     float playerAngle = 0.0f;
 
     Vector2 direction;
+    Vector2 dirNormalizado = { 0,0 };
 
     float radius = 50.0f;
     float speed = 100.0f;
+    float acceleration = 0.0f;
 
     InitWindow(screenWidth, screenHeight, "Asteroids");
 
@@ -27,8 +29,6 @@ int main()
         direction.x = GetMouseX() - pos.x;
         direction.y = GetMouseY() - pos.y;
 
-        Vector2 dirNormalizado = Vector2Normalize(direction);
-
         if (direction.x > 0)
         {
             playerAngle = atan(direction.y / direction.x) * 60;
@@ -38,17 +38,28 @@ int main()
             playerAngle = (atan(direction.y / direction.x) * 60) + 180;
         }
 
+        if (acceleration > 0.0f && !IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+        {
+            acceleration -= 0.05f;
+        }
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
         {
-            pos.x += dirNormalizado.x * GetFrameTime() * speed;
-            pos.y += dirNormalizado.y * GetFrameTime() * speed;
+            dirNormalizado = Vector2Normalize(direction);
+            acceleration += 0.2f;
         }
+        if (acceleration > 5)
+        {
+            acceleration = 5;
+        }
+
+        pos.x += dirNormalizado.x * GetFrameTime() * speed * acceleration;
+        pos.y += dirNormalizado.y * GetFrameTime() * speed * acceleration;
 
         BeginDrawing();
 
         ClearBackground(BLACK);
 
-        DrawPolyLines(pos,3,50,playerAngle,RAYWHITE);
+        DrawPolyLines(pos,3,radius,playerAngle,RAYWHITE);
 
         EndDrawing();
     }
