@@ -27,3 +27,8 @@ struct Asteroid
     AsteroidSize size;
     bool active;
 };
+
+enum class GameState
+{
+    Menu = 1, Game, Credits, Quit
+};

@@ -13,7 +13,7 @@ void AsteroidSpawner(Asteroid asteroids[], int amount, float& spawnTime)
                 asteroids[i].size = AsteroidSize::LARGE;
                 asteroids[i].position = { (float)(rand() % 1024), 0 };
 
-                float angle = (float)(rand() % 600) / 100.0f;
+                float angle = (float)(rand() % 360);
                 asteroids[i].velocity = { cosf(angle) * 100, sinf(angle) * 100 };
                 break;
             }
@@ -71,7 +71,7 @@ void SplitAsteroid(Asteroid* asteroids, int index)
             asteroids[i].size = newSize;
             asteroids[i].position = a.position;
 
-            float angle = (float)(rand() % 600)/100.0f;
+            float angle = (float)(rand() % 360);
             asteroids[i].velocity = { cosf(angle) * newSpeed, sinf(angle) * newSpeed };
 
             for (int j = i + 1; j < MAX_ASTEROIDS; j++) {
@@ -80,7 +80,7 @@ void SplitAsteroid(Asteroid* asteroids, int index)
                     asteroids[j].size = newSize;
                     asteroids[j].position = a.position;
 
-                    float angle2 = (float)(rand() % 600) / 100;;
+                    float angle2 = (float)(rand() % 360);;
                     asteroids[j].velocity = { cosf(angle2) * newSpeed, sinf(angle2) * newSpeed };
                     break;
                 }
@@ -129,7 +129,7 @@ void AsteroidLogic(Asteroid asteroids[], Bullet bullet[])
                     float distY = bullet[j].position.y - asteroids[i].position.y;
                     float distance_sq = (distX * distX) + (distY * distY);
 
-                    bool colliding = distance_sq <= (20.0f + GetAsteroidRadius(asteroids[i].size)) * (20.0f + GetAsteroidRadius(asteroids[i].size));
+                    bool colliding = distance_sq <= (10.0f + GetAsteroidRadius(asteroids[i].size)) * (10.0f + GetAsteroidRadius(asteroids[i].size));
                     if (colliding)
                     {
                         SplitAsteroid(asteroids, i);

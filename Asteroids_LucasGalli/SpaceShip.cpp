@@ -1,9 +1,10 @@
 #include "SpaceShip.h"
 
-void playerMovement(Vector2& pos, float& radius, float& playerAngle, float& accelerationX, float& accelerationY,Vector2& direction,Vector2& normalDir, float speed)
+void playerMovement(Vector2& pos, float& radius, float& playerAngle, float acceleration,Vector2& direction,Vector2& normalDir, Vector2& velocity)
 {
 
     direction = Vector2Subtract(GetMousePosition(), pos);
+    normalDir = Vector2Normalize(direction);
 
     if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
     {
@@ -20,64 +21,17 @@ void playerMovement(Vector2& pos, float& radius, float& playerAngle, float& acce
     {
         if (pos.x < GetMouseX() - radius || pos.x > GetMouseX() + radius || pos.y < GetMouseY() - radius || pos.y > GetMouseY() + radius)
         {
-            if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
-            {
-                normalDir = Vector2Normalize(direction);
-            }
-            if (normalDir.x < 0)
-            {
-                accelerationX -= 0.2f;
-            }
-            if (normalDir.x > 0)
-            {
-                accelerationX += 0.2f;
-            }
-            if (normalDir.y < 0)
-            {
-                accelerationY -= 0.2f;
-            }
-            if (normalDir.y > 0)
-            {
-                accelerationY += 0.2f;
-            }
+
+            velocity.x += normalDir.x * acceleration * GetFrameTime();
+            velocity.y += normalDir.y * acceleration * GetFrameTime();
+
+
         }
     }
-    if (accelerationX > 5)
-    {
-        accelerationX = 5;
-    }
-    if (accelerationX < -5)
-    {
-        accelerationX = -5;
-    }
-    if (accelerationY > 5)
-    {
-        accelerationY = 5;
-    }
-    if (accelerationY < -5)
-    {
-        accelerationY = -5;
-    }
 
-    if (accelerationX > 0.0f && !IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-    {
-        accelerationX -= 0.05f;
-    }
-    if (accelerationX < 0.0f && !IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-    {
-        accelerationX += 0.05f;
-    }
-    if (accelerationY > 0.0f && !IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-    {
-        accelerationY -= 0.05f;
-    }
-    if (accelerationY < 0.0f && !IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-    {
-        accelerationY += 0.05f;
-    }
 
-    pos.x += abs(normalDir.x) * GetFrameTime() * speed * accelerationX;
-    pos.y += abs(normalDir.y) * GetFrameTime() * speed * accelerationY;
+    pos.x += GetFrameTime() * velocity.x;
+    pos.y += GetFrameTime() * velocity.y;
 
     if (pos.x < 0)
     {
@@ -97,7 +51,7 @@ void playerMovement(Vector2& pos, float& radius, float& playerAngle, float& acce
     }
 }
 
-void bulletLogic(Bullet bullet[], float& accelerationX, float& accelerationY, Vector2& direction, float speed, Vector2 playerPos)
+void bulletLogic(Bullet bullet[], float& acceleration, Vector2& direction, float bulletSpeed, Vector2 playerPos)
 {
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
     {
@@ -117,8 +71,8 @@ void bulletLogic(Bullet bullet[], float& accelerationX, float& accelerationY, Ve
     {
         if (bullet[i].active)
         {
-            bullet[i].position.x += bullet[i].velocity.x * GetFrameTime() * speed * 5;
-            bullet[i].position.y += bullet[i].velocity.y * GetFrameTime() * speed * 5;
+            bullet[i].position.x += bullet[i].velocity.x * GetFrameTime() * bulletSpeed * 5;
+            bullet[i].position.y += bullet[i].velocity.y * GetFrameTime() * bulletSpeed * 5;
 
             if (bullet[i].position.x > 1024 || bullet[i].position.x < 0)
             {
@@ -140,6 +94,6 @@ void bulletDraw(Bullet bullets[])
         {
             continue;
         }
-        DrawCircleLines((int)bullets[i].position.x, (int)bullets[i].position.y, 20, RAYWHITE);
+        DrawCircleLines((int)bullets[i].position.x, (int)bullets[i].position.y, 10, RAYWHITE);
     }
 }
