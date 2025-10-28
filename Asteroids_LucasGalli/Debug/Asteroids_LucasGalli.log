@@ -1,3 +1,0 @@
-﻿  Game.cpp
-C:\Users\Aula 2\Asteroids_Galli\Asteroids_LucasGalli\Game.cpp(135,57): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-  Asteroids_LucasGalli.vcxproj -> C:\Users\Aula 2\Asteroids_Galli\Debug\Asteroids_LucasGalli.exe

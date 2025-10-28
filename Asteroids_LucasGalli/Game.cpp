@@ -45,7 +45,7 @@ void Game(GameState& screen, Vector2& mouse)
 
                 playerMovement(pos, radius, playerAngle, acceleration, direction, normalDir, velocity);
 
-                bulletLogic(bullets, acceleration, direction, bulletSpeed, pos);
+                bulletLogic(bullets, direction, bulletSpeed, pos);
             }
             else
             {
@@ -132,7 +132,7 @@ void Game(GameState& screen, Vector2& mouse)
 
             DrawRectangle(buttonWidth * 2, buttonHeight * 7, buttonWidth, buttonHeight, GRAY);
 
-            DrawRectangle(buttonWidth * 2, buttonHeight * 8.5, buttonWidth, buttonHeight, GRAY);
+            DrawRectangle(buttonWidth * 2, (int)(buttonHeight * 8.5), buttonWidth, buttonHeight, GRAY);
 
             EndDrawing();
         }

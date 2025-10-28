@@ -5,7 +5,7 @@
 
 int main()
 {
-    srand(time(nullptr));
+    srand(static_cast<unsigned int>(time(nullptr)));
 
     Vector2 mouse = GetMousePosition();
 

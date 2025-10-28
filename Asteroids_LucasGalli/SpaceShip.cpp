@@ -51,7 +51,7 @@ void playerMovement(Vector2& pos, float& radius, float& playerAngle, float accel
     }
 }
 
-void bulletLogic(Bullet bullet[], float& acceleration, Vector2& direction, float bulletSpeed, Vector2 playerPos)
+void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2 playerPos)
 {
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
     {

@@ -4,6 +4,6 @@
 
 void playerMovement(Vector2& pos, float& radius, float& playerAngle, float acceleration, Vector2& direction, Vector2& normalDir, Vector2& velocity);
 
-void bulletLogic(Bullet bullet[], float& acceleration, Vector2& direction, float bulletSpeed, Vector2 playerPos);
+void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2 playerPos);
 
 void bulletDraw(Bullet bullet[]);

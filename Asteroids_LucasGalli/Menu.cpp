@@ -2,8 +2,8 @@
 
 void MainMenu(GameState& screen, Vector2& mouse)
 {
-	int buttonWidth = screenWidth/5;
-	int buttonHeight = screenHeight/12;
+	float buttonWidth = screenWidth/5;
+	float buttonHeight = screenHeight/12;
 
 	while (screen == GameState::Menu)
 	{
@@ -35,11 +35,11 @@ void MainMenu(GameState& screen, Vector2& mouse)
 
 		ClearBackground(BLACK);
 
-		DrawRectangle(buttonWidth * 2, buttonHeight * 7, buttonWidth, buttonHeight, WHITE);
+		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 7), (int)buttonWidth, (int)buttonHeight, WHITE);
 
-		DrawRectangle(buttonWidth * 2, buttonHeight * 8.5, buttonWidth, buttonHeight, WHITE);
+		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 8.5), (int)buttonWidth, (int)buttonHeight, WHITE);
 
-		DrawRectangle(buttonWidth * 2, buttonHeight * 10, buttonWidth, buttonHeight, WHITE);
+		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 10), (int)buttonWidth, (int)buttonHeight, WHITE);
 
 		EndDrawing();
 

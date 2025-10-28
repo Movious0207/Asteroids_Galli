@@ -5,16 +5,16 @@ void AsteroidSpawner(Asteroid asteroids[], int amount, float& spawnTime)
     spawnTime += GetFrameTime();
     for (int i = 0; i < amount; i++)
     {
-        for (int i = 0; i < MAX_ASTEROIDS; i++)
+        for (int j = 0; j < MAX_ASTEROIDS; j++)
         {
-            if (!asteroids[i].active)
+            if (!asteroids[j].active)
             {
-                asteroids[i].active = true;
-                asteroids[i].size = AsteroidSize::LARGE;
-                asteroids[i].position = { (float)(rand() % 1024), 0 };
+                asteroids[j].active = true;
+                asteroids[j].size = AsteroidSize::LARGE;
+                asteroids[j].position = { (float)(rand() % 1024), 0 };
 
                 float angle = (float)(rand() % 360);
-                asteroids[i].velocity = { cosf(angle) * 100, sinf(angle) * 100 };
+                asteroids[j].velocity = { cosf(angle) * 100, sinf(angle) * 100 };
                 break;
             }
         }
