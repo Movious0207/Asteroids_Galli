@@ -1,5 +1,26 @@
 #include "Asteroid.h"
 
+void AsteroidSpawner(Asteroid asteroids[], int amount, float& spawnTime)
+{
+    spawnTime += GetFrameTime();
+    for (int i = 0; i < amount; i++)
+    {
+        for (int i = 0; i < MAX_ASTEROIDS; i++)
+        {
+            if (!asteroids[i].active)
+            {
+                asteroids[i].active = true;
+                asteroids[i].size = AsteroidSize::LARGE;
+                asteroids[i].position = { (float)(rand() % 1024), 0 };
+
+                float angle = (float)(rand() % 600) / 100.0f;
+                asteroids[i].velocity = { cosf(angle) * 100, sinf(angle) * 100 };
+                break;
+            }
+        }
+    }
+}
+
 float GetAsteroidRadius(AsteroidSize size) 
 {
     switch (size) 
@@ -50,7 +71,7 @@ void SplitAsteroid(Asteroid* asteroids, int index)
             asteroids[i].size = newSize;
             asteroids[i].position = a.position;
 
-            float angle = ((rand() % 200)-100.0f)/100.0f;
+            float angle = (float)(rand() % 600)/100.0f;
             asteroids[i].velocity = { cosf(angle) * newSpeed, sinf(angle) * newSpeed };
 
             for (int j = i + 1; j < MAX_ASTEROIDS; j++) {
@@ -59,7 +80,7 @@ void SplitAsteroid(Asteroid* asteroids, int index)
                     asteroids[j].size = newSize;
                     asteroids[j].position = a.position;
 
-                    float angle2 = ((rand() % 200) - 100) / 100;;
+                    float angle2 = (float)(rand() % 600) / 100;;
                     asteroids[j].velocity = { cosf(angle2) * newSpeed, sinf(angle2) * newSpeed };
                     break;
                 }
@@ -71,7 +92,7 @@ void SplitAsteroid(Asteroid* asteroids, int index)
     a.active = false;
 }
 
-void AsteroidLogic(Asteroid asteroids[],int screenWidth, int screenHeight, Bullet bullet[])
+void AsteroidLogic(Asteroid asteroids[], Bullet bullet[])
 {
     for (int i = 0; i < MAX_ASTEROIDS; i++)
     {
@@ -128,6 +149,6 @@ void AsteroidDraw(Asteroid asteroids[])
         {
             continue;
         }
-        DrawCircleLines(asteroids[i].position.x, asteroids[i].position.y, GetAsteroidRadius(asteroids[i].size), RAYWHITE);
+        DrawCircleLines((int)asteroids[i].position.x, (int)asteroids[i].position.y, GetAsteroidRadius(asteroids[i].size), RAYWHITE);
     }
 }

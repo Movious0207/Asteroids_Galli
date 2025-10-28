@@ -78,6 +78,23 @@ void playerMovement(Vector2& pos, float& radius, float& playerAngle, float& acce
 
     pos.x += abs(normalDir.x) * GetFrameTime() * speed * accelerationX;
     pos.y += abs(normalDir.y) * GetFrameTime() * speed * accelerationY;
+
+    if (pos.x < 0)
+    {
+        pos.x = screenWidth;
+    }
+    if (pos.x > screenWidth)
+    {
+        pos.x = 0;
+    }
+    if (pos.y < 0)
+    {
+        pos.y = screenHeight;
+    }
+    if (pos.y > screenHeight)
+    {
+        pos.y = 0;
+    }
 }
 
 void bulletLogic(Bullet bullet[], float& accelerationX, float& accelerationY, Vector2& direction, float speed, Vector2 playerPos)
@@ -123,6 +140,6 @@ void bulletDraw(Bullet bullets[])
         {
             continue;
         }
-        DrawCircleLines(bullets[i].position.x, bullets[i].position.y, 20, RAYWHITE);
+        DrawCircleLines((int)bullets[i].position.x, (int)bullets[i].position.y, 20, RAYWHITE);
     }
 }

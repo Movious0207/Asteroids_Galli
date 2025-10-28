@@ -1,4 +1,6 @@
-﻿  SpaceShip.cpp
-C:\Users\Lucas\Asteroids_Galli\Asteroids_LucasGalli\SpaceShip.cpp(126,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Lucas\Asteroids_Galli\Asteroids_LucasGalli\SpaceShip.cpp(126,44): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+﻿  Asteroid.cpp
+  Main.cpp
+C:\Users\Lucas\Asteroids_Galli\Asteroids_LucasGalli\Main.cpp(6,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  SpaceShip.cpp
+  Generando código...
   Asteroids_LucasGalli.vcxproj -> C:\Users\Lucas\Asteroids_Galli\Debug\Asteroids_LucasGalli.exe

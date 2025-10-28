@@ -4,6 +4,9 @@
 #include <raymath.h>
 #include <ctime>
 
+const int screenWidth = 1024;
+const int screenHeight = 768;
+
 const int MAX_BULLETS = 100;
 const int MAX_ASTEROIDS = 100;
 
