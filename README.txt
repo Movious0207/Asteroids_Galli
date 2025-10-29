@@ -6,7 +6,7 @@ This is a game inspired by the classic Asteroids, made with Raylib by Lucas Gall
 --How to play
 #
 -Destroy as many Slimes as you can without getting hit
--You have 3 lives
+-You have 5 lives
 -To play, run release.exe.
 #
 --Controls
