@@ -5,6 +5,7 @@
 
 int main()
 {
+
     srand(static_cast<unsigned int>(time(nullptr)));
 
     Vector2 mouse = GetMousePosition();
@@ -13,24 +14,29 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "Asteroids");
 
-    SetTargetFPS(60);      
+    InitAudioDevice();
 
+    SetMasterVolume(1.0f);
+
+    Texture background = LoadTexture("res/background.png");
+
+    SetTargetFPS(60);      
 
     while (!WindowShouldClose())  
     {
         switch (actualScreen)
         {
         case GameState::Menu:
-            MainMenu(actualScreen, mouse);
+            MainMenu(actualScreen, mouse, background);
             break;
         case GameState::Game:
-            Game(actualScreen, mouse);
+            Game(actualScreen, mouse, background);
             break;
         case GameState::Credits:
-            Credits(actualScreen, mouse);
+            Credits(actualScreen, mouse, background);
             break;
         case GameState::Quit:
-
+            CloseAudioDevice();
             CloseWindow();
 
             return 0;
@@ -39,6 +45,7 @@ int main()
             break;
         }
     }
+    CloseAudioDevice();
     CloseWindow();
 
     return 0;

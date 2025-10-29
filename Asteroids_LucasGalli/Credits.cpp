@@ -1,7 +1,10 @@
 #include "Credits.h"
 
-void Credits(GameState& screen, Vector2& mouse)
+void Credits(GameState& screen, Vector2& mouse, Texture background)
 {
+
+	Texture credits = LoadTexture("res/credits.png");
+
 	while (screen == GameState::Credits)
 	{
 		int buttonSize = 70;
@@ -18,7 +21,8 @@ void Credits(GameState& screen, Vector2& mouse)
 
 		BeginDrawing();
 		
-		ClearBackground(BLACK);
+		DrawTextureEx(background, { 0,0}, 0, 0.9, WHITE);
+		DrawTextureEx(credits, { -80, 80 }, 0, 0.9, WHITE);
 
 		DrawRectangle(10, 10, buttonSize, buttonSize, WHITE);
 		EndDrawing();

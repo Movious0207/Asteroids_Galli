@@ -1,8 +1,19 @@
 #include "Asteroid.h"
 
-void AsteroidSpawner(Asteroid asteroids[], int amount, float& spawnTime)
+void AsteroidSpawner(Asteroid asteroids[], int& amount, float& spawnTime)
 {
     spawnTime += GetFrameTime();
+
+    if (spawnTime > 2)
+    {
+        spawnTime -= 2;
+
+        if (rand()% 2 == 1)
+        {
+            amount++;
+        }
+    }
+
     for (int i = 0; i < amount; i++)
     {
         for (int j = 0; j < MAX_ASTEROIDS; j++)
@@ -15,6 +26,7 @@ void AsteroidSpawner(Asteroid asteroids[], int amount, float& spawnTime)
 
                 float angle = (float)(rand() % 360);
                 asteroids[j].velocity = { cosf(angle) * 100, sinf(angle) * 100 };
+                amount--;
                 break;
             }
         }
@@ -92,7 +104,7 @@ void SplitAsteroid(Asteroid* asteroids, int index)
     a.active = false;
 }
 
-void AsteroidLogic(Asteroid asteroids[], Bullet bullet[])
+void AsteroidLogic(Asteroid asteroids[], Bullet bullet[], int& score, Sound small, Sound medium, Sound big)
 {
     for (int i = 0; i < MAX_ASTEROIDS; i++)
     {
@@ -132,6 +144,25 @@ void AsteroidLogic(Asteroid asteroids[], Bullet bullet[])
                     bool colliding = distance_sq <= (10.0f + GetAsteroidRadius(asteroids[i].size)) * (10.0f + GetAsteroidRadius(asteroids[i].size));
                     if (colliding)
                     {
+                        switch (asteroids[i].size)
+                        {
+                        case AsteroidSize::LARGE:
+                            score += 100;
+                            PlaySound(big);
+                            break;
+                        case AsteroidSize::MEDIUM:
+                            score += 150;
+                            PlaySound(medium);
+                            break;
+                        case AsteroidSize::SMALL:
+                            score += 200;
+                            PlaySound(small);
+                            break;
+                        case AsteroidSize::NONE:
+                            break;
+                        default:
+                            break;
+                        }
                         SplitAsteroid(asteroids, i);
                         bullet[j].active = false;
                     }
@@ -141,7 +172,7 @@ void AsteroidLogic(Asteroid asteroids[], Bullet bullet[])
     }
 }
 
-void AsteroidDraw(Asteroid asteroids[])
+void AsteroidDraw(Asteroid asteroids[],Texture smallSlime, Texture mediumSlime, Texture bigSlime)
 {
     for (int i = 0; i < MAX_ASTEROIDS; i++)
     {
@@ -149,6 +180,21 @@ void AsteroidDraw(Asteroid asteroids[])
         {
             continue;
         }
-        DrawCircleLines((int)asteroids[i].position.x, (int)asteroids[i].position.y, GetAsteroidRadius(asteroids[i].size), RAYWHITE);
+        switch (asteroids[i].size)
+        {
+        case AsteroidSize::LARGE:
+            DrawTexturePro(bigSlime, { 0,0,1200,900 }, { asteroids[i].position.x,asteroids[i].position.y,170,170  }, {65,65}, 0, WHITE);
+            break;
+        case AsteroidSize::MEDIUM:
+            DrawTexturePro(mediumSlime, { 0,0,1200,900 }, { asteroids[i].position.x,asteroids[i].position.y,90,90 }, { 35,35}, 0, WHITE);
+            break;
+        case AsteroidSize::SMALL:
+            DrawTexturePro(smallSlime, { 0,0,1200,900 }, { asteroids[i].position.x,asteroids[i].position.y,60,60 }, { 20,20 }, 0, WHITE);
+            break;
+        case AsteroidSize::NONE:
+            break;
+        default:
+            break;
+        }
     }
 }

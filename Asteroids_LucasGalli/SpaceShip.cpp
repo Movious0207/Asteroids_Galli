@@ -51,7 +51,7 @@ void playerMovement(Vector2& pos, float& radius, float& playerAngle, float accel
     }
 }
 
-void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2 playerPos)
+void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2 playerPos, Sound shoot)
 {
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
     {
@@ -59,6 +59,15 @@ void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2
         {
             if (!bullet[i].active)
             {
+                PlaySound(shoot);
+                if (direction.x < 0)
+                {
+                    bullet[i].angle = atan(direction.y / direction.x) * 60;
+                }
+                else
+                {
+                    bullet[i].angle = (atan(direction.y / direction.x) * 60) + 180;
+                }
                 bullet[i].active = true;
                 bullet[i].velocity = Vector2Normalize(direction);
                 bullet[i].position.x = playerPos.x;
@@ -86,7 +95,7 @@ void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2
     }
 }
 
-void bulletDraw(Bullet bullets[])
+void bulletDraw(Bullet bullets[], Texture fireball)
 {
     for (int i = 0; i < MAX_BULLETS; i++)
     {
@@ -94,6 +103,6 @@ void bulletDraw(Bullet bullets[])
         {
             continue;
         }
-        DrawCircleLines((int)bullets[i].position.x, (int)bullets[i].position.y, 10, RAYWHITE);
+        DrawTextureEx(fireball, { bullets[i].position.x, bullets[i].position.y}, bullets[i].angle, 0.02, RAYWHITE);
     }
 }
