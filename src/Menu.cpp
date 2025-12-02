@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-void MainMenu(GameState& screen, Vector2& mouse, Texture background)
+void Menu::Logic(GameState& screen, Vector2& mouse, Texture background)
 {
 	Texture titleCard = LoadTexture("res/titleCard.png");
 

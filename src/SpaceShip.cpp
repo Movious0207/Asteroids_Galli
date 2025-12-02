@@ -1,13 +1,13 @@
 #include "SpaceShip.h"
 
-void playerMovement(Vector2& pos, float& radius, float& playerAngle, float acceleration,Vector2& direction,Vector2& normalDir, Vector2& velocity)
+void player::Movement(Vector2& pos, float& radius, float& playerAngle, float acceleration,Vector2& direction,Vector2& normalDir, Vector2& velocity)
 {
-
-    direction = Vector2Subtract(GetMousePosition(), pos);
-    normalDir = Vector2Normalize(direction);
 
     if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
     {
+        direction = Vector2Subtract(GetMousePosition(), pos);
+        normalDir = Vector2Normalize(direction);
+
         if (direction.x > 0)
         {
             playerAngle = atan(direction.y / direction.x) * 60;
@@ -51,7 +51,7 @@ void playerMovement(Vector2& pos, float& radius, float& playerAngle, float accel
     }
 }
 
-void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2 playerPos, Sound shoot)
+void bullet::Logic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2 playerPos, Sound shoot)
 {
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
     {
@@ -95,7 +95,7 @@ void bulletLogic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vector2
     }
 }
 
-void bulletDraw(Bullet bullets[], Texture fireball)
+void bullet::Draw(Bullet bullets[], Texture fireball)
 {
     for (int i = 0; i < MAX_BULLETS; i++)
     {
@@ -103,6 +103,6 @@ void bulletDraw(Bullet bullets[], Texture fireball)
         {
             continue;
         }
-        DrawTextureEx(fireball, { bullets[i].position.x, bullets[i].position.y}, bullets[i].angle, 0.02, RAYWHITE);
+        DrawTexturePro(fireball, { 0,0,1920,1080 }, { bullets[i].position.x, bullets[i].position.y, static_cast<float>(bullets[i].size), static_cast<float>(bullets[i].size) }, { bullets[i].position.x + bullets[i].size / 2 , bullets[i].position.y + bullets[i].size / 2 }, bullets[i].angle, RAYWHITE);
     }
 }

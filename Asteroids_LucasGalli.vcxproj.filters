@@ -17,6 +17,7 @@
     <ClCompile Include="src\SpaceShip.cpp">
       <Filter>Elements\SpaceShip</Filter>
     </ClCompile>
+    <ClCompile Include="src\Program.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Menu.h">
@@ -37,6 +38,7 @@
     <ClInclude Include="src\Constants.h">
       <Filter>Elements</Filter>
     </ClInclude>
+    <ClInclude Include="src\Program.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Screens">

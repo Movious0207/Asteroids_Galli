@@ -1,4 +1,7 @@
 #pragma once
 #include "Constants.h"
 
-void Credits(GameState& screen, Vector2& mouse, Texture background);
+namespace Credits
+{
+	void Logic(GameState& screen, Vector2& mouse, Texture background);
+}

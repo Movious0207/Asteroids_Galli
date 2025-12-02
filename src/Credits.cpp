@@ -1,6 +1,6 @@
 #include "Credits.h"
 
-void Credits(GameState& screen, Vector2& mouse, Texture background)
+void Credits::Logic(GameState& screen, Vector2& mouse, Texture background)
 {
 
 	Texture credits = LoadTexture("res/credits.png");

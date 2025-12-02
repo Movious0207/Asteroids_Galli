@@ -1,12 +1,13 @@
 #include "Game.h"
 
 static void Reset();
+static void Conditions(Vector2& pos, float radius, int& lives, Asteroid asteroids[], bool& isPlaying, int& amount, float& invisibleTime, Sound takeDmg);
 
 static bool isPaused = false;
 static bool levelStart = true;
 static bool isPlaying = true;
 
-void Game(GameState& screen, Vector2& mouse, Texture background)
+void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
 {
     static Sound smallHit = LoadSound("res/smallHit.wav");
     static Sound mediumHit = LoadSound("res/mediumHit.wav");
@@ -47,7 +48,12 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
     while (screen == GameState::Game)
     {
         mouse = GetMousePosition();
-
+        
+        if (WindowShouldClose())
+        {
+            screen = GameState::Quit;
+        }
+        
         if (!isPaused)
         {
             wizardRec.x = pos.x;
@@ -68,9 +74,9 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
                     respawnTimer -= GetFrameTime();
                 }
 
-                playerMovement(pos, radius, playerAngle, acceleration, direction, normalDir, velocity);
+                player::Movement(pos, radius, playerAngle, acceleration, direction, normalDir, velocity);
 
-                bulletLogic(bullets, direction, bulletSpeed, pos, shoot);
+                bullet::Logic(bullets, direction, bulletSpeed, pos, shoot);
             }
             else
             {
@@ -96,7 +102,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
             if (isPlaying)
             {
                 DrawTexturePro(wizard, {0,0,50,40}, wizardRec, {40,10}, playerAngle - 5, WHITE);
-                bulletDraw(bullets, fireball);
+                bullet::Draw(bullets, fireball);
             }
             else
             {
@@ -150,7 +156,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
 
             Asteroids::Draw(asteroids,smallSlime, mediumSlime, bigSlime);
 
-            bulletDraw(bullets, fireball);
+            bullet::Draw(bullets, fireball);
 
             DrawRectangle(buttonWidth * 2, buttonHeight * 7, buttonWidth, buttonHeight, GRAY);
             
@@ -164,7 +170,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
     }
 }
 
-void Conditions(Vector2& pos,float radius,int& lives, Asteroid asteroids[], bool& isPlaying, int& amount, float& invisibleTime, Sound takeDmg)
+static void Conditions(Vector2& pos,float radius,int& lives, Asteroid asteroids[], bool& isPlaying, int& amount, float& invisibleTime, Sound takeDmg)
 {
     int counter = 0;
     for (int i = 0; i < MAX_ASTEROIDS; i++)
