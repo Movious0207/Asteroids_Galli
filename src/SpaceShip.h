@@ -3,6 +3,8 @@
 #include "Constants.h"
 #include "Asteroid.h"
 
+static Rectangle wizardRec = { 10,0,60,40 };
+
 namespace player
 {
 	void Movement(Vector2& pos, float& radius, float& playerAngle, float acceleration, Vector2& direction, Vector2& normalDir, Vector2& velocity);

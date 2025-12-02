@@ -2,21 +2,18 @@
 
 void player::Movement(Vector2& pos, float& radius, float& playerAngle, float acceleration,Vector2& direction,Vector2& normalDir, Vector2& velocity)
 {
+    direction = Vector2Subtract(GetMousePosition(), pos);
+    normalDir = Vector2Normalize(direction);
 
-    if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+    if (direction.x > 0)
     {
-        direction = Vector2Subtract(GetMousePosition(), pos);
-        normalDir = Vector2Normalize(direction);
-
-        if (direction.x > 0)
-        {
-            playerAngle = atan(direction.y / direction.x) * 60;
-        }
-        else
-        {
-            playerAngle = (atan(direction.y / direction.x) * 60) + 180;
-        }
+        playerAngle = atan(direction.y / direction.x) * 60;
     }
+    else
+    {
+        playerAngle = (atan(direction.y / direction.x) * 60) + 180;
+    }
+
     if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
     {
         if (pos.x < GetMouseX() - radius || pos.x > GetMouseX() + radius || pos.y < GetMouseY() - radius || pos.y > GetMouseY() + radius)
@@ -70,8 +67,8 @@ void bullet::Logic(Bullet bullet[], Vector2& direction, float bulletSpeed, Vecto
                 }
                 bullet[i].active = true;
                 bullet[i].velocity = Vector2Normalize(direction);
-                bullet[i].position.x = playerPos.x;
-                bullet[i].position.y = playerPos.y;
+                bullet[i].position.x = playerPos.x - wizardRec.width / 2;
+                bullet[i].position.y = playerPos.y - wizardRec.height / 2;
                 break;
             }
         }
@@ -103,6 +100,6 @@ void bullet::Draw(Bullet bullets[], Texture fireball)
         {
             continue;
         }
-        DrawTexturePro(fireball, { 0,0,1920,1080 }, { bullets[i].position.x, bullets[i].position.y, static_cast<float>(bullets[i].size), static_cast<float>(bullets[i].size) }, { bullets[i].position.x + bullets[i].size / 2 , bullets[i].position.y + bullets[i].size / 2 }, bullets[i].angle, RAYWHITE);
+        DrawTexturePro(fireball, { 0,0,1287,954 }, { bullets[i].position.x + bullets[i].size.x/2 ,  bullets[i].position.y + bullets[i].size.y / 2 , bullets[i].size.x, bullets[i].size.y }, { bullets[i].size.x / 2 , bullets[i].size.y / 2 }, bullets[i].angle, RAYWHITE);
     }
 }

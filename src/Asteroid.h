@@ -5,8 +5,6 @@ namespace Asteroids
 {
 	void Spawner(Asteroid asteroids[], int& amount, float& spawnTime);
 
-	void Split(Asteroid* asteroids, int index);
-
 	void Logic(Asteroid asteroids[], Bullet bullet[], int& score, Sound small, Sound medium, Sound big);
 
 	float GetRadius(AsteroidSize size);

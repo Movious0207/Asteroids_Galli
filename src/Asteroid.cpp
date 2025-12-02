@@ -1,5 +1,7 @@
 #include "Asteroid.h"
 
+static void Split(Asteroid* asteroids, int index);
+
 void Asteroids::Spawner(Asteroid asteroids[], int& amount, float& spawnTime)
 {
     spawnTime += GetFrameTime();
@@ -33,7 +35,7 @@ void Asteroids::Spawner(Asteroid asteroids[], int& amount, float& spawnTime)
     }
 }
 
-void Asteroids::Split(Asteroid* asteroids, int index)
+static void Split(Asteroid* asteroids, int index)
 {
     Asteroid& a = asteroids[index];
 
@@ -149,7 +151,7 @@ void Asteroids::Logic(Asteroid asteroids[], Bullet bullet[], int& score, Sound s
                         default:
                             break;
                         }
-                        Asteroids::Split(asteroids, i);
+                        Split(asteroids, i);
                         bullet[j].active = false;
                     }
                 }
@@ -169,13 +171,13 @@ void Asteroids::Draw(Asteroid asteroids[],Texture smallSlime, Texture mediumSlim
         switch (asteroids[i].size)
         {
         case AsteroidSize::LARGE:
-            DrawTexturePro(bigSlime, { 0,0,1200,900 }, { asteroids[i].position.x,asteroids[i].position.y,170,170  }, {65,65}, 0, WHITE);
+            DrawTexturePro(bigSlime, { 0,0,1200,900 }, { asteroids[i].position.x - 85,asteroids[i].position.y - 85,170,170  }, {0,0}, 0, WHITE);
             break;
         case AsteroidSize::MEDIUM:
-            DrawTexturePro(mediumSlime, { 0,0,1200,900 }, { asteroids[i].position.x,asteroids[i].position.y,90,90 }, { 35,35}, 0, WHITE);
+            DrawTexturePro(mediumSlime, { 0,0,1200,900 }, { asteroids[i].position.x - 40,asteroids[i].position.y - 40,80,80 }, { 0,0}, 0, WHITE);
             break;
         case AsteroidSize::SMALL:
-            DrawTexturePro(smallSlime, { 0,0,1200,900 }, { asteroids[i].position.x,asteroids[i].position.y,60,60 }, { 20,20 }, 0, WHITE);
+            DrawTexturePro(smallSlime, { 0,0,1200,900 }, { asteroids[i].position.x - 30,asteroids[i].position.y - 30,60,60 }, { 0,0 }, 0, WHITE);
             break;
         case AsteroidSize::NONE:
             break;
@@ -190,11 +192,11 @@ float Asteroids::GetRadius(AsteroidSize size)
     switch (size)
     {
     case AsteroidSize::LARGE:
-        return 60;
+        return 85;
     case AsteroidSize::MEDIUM:
-        return 35;
+        return 40;
     case AsteroidSize::SMALL:
-        return 20;
+        return 30;
     default: return 0;
     }
 }

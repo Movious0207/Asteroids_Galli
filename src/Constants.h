@@ -14,8 +14,8 @@ struct Bullet
 {
 	Vector2 position;
 	Vector2 velocity;
+    Vector2 size;
     float angle;
-	int size;
 	bool active;
 };
 

@@ -4,7 +4,6 @@ static void Reset();
 static void Conditions(Vector2& pos, float radius, int& lives, Asteroid asteroids[], bool& isPlaying, int& amount, float& invisibleTime, Sound takeDmg);
 
 static bool isPaused = false;
-static bool levelStart = true;
 static bool isPlaying = true;
 
 void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
@@ -24,13 +23,16 @@ void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
 
     Bullet bullets[MAX_BULLETS] = { 0 };
 
+    for (int i = 0; i < MAX_BULLETS; i++)
+    {
+        bullets[i].size = { 40,20 };
+    }
+
     Vector2 pos = { 400, 225 };
 
     Vector2 direction;
     Vector2 normalDir = { 0,0 };
     Vector2 velocity = { 0 };
-
-    Rectangle wizardRec = {0,0, 60,40};
 
     float bulletSpeed = 200;
     float playerAngle = 0.0f;
@@ -101,7 +103,7 @@ void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
 
             if (isPlaying)
             {
-                DrawTexturePro(wizard, {0,0,50,40}, wizardRec, {40,10}, playerAngle - 5, WHITE);
+                DrawTexturePro(wizard, {0,0,50,40}, wizardRec, {25,20}, playerAngle, WHITE);
                 bullet::Draw(bullets, fireball);
             }
             else
@@ -151,7 +153,7 @@ void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
 
             if (isPlaying)
             {
-                DrawTexturePro(wizard, { 0,0,50,40 }, wizardRec, { 40,10 }, playerAngle - 5, WHITE);
+                DrawTexturePro(wizard, { 0,0,50,40 }, wizardRec, { wizardRec.width / 2, wizardRec.height / 2 }, playerAngle - 5, WHITE);
             }
 
             Asteroids::Draw(asteroids,smallSlime, mediumSlime, bigSlime);
@@ -170,7 +172,7 @@ void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
     }
 }
 
-static void Conditions(Vector2& pos,float radius,int& lives, Asteroid asteroids[], bool& isPlaying, int& amount, float& invisibleTime, Sound takeDmg)
+static void Conditions(Vector2& pos, float radius, int& lives, Asteroid asteroids[], bool& isPlaying, int& amount, float& invisibleTime, Sound takeDmg)
 {
     int counter = 0;
     for (int i = 0; i < MAX_ASTEROIDS; i++)
