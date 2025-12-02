@@ -1,57 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Menu.cpp">
+      <Filter>Screens\Main Menu</Filter>
     </ClCompile>
-    <ClCompile Include="SpaceShip.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Screens\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Asteroid.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\Credits.cpp">
+      <Filter>Screens\Credits</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\Asteroid.cpp">
+      <Filter>Elements\Asteroid</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Credits.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\SpaceShip.cpp">
+      <Filter>Elements\SpaceShip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpaceShip.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Menu.h">
+      <Filter>Screens\Main Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Asteroid.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Game.h">
+      <Filter>Screens\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Credits.h">
+      <Filter>Screens\Credits</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Asteroid.h">
+      <Filter>Elements\Asteroid</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\SpaceShip.h">
+      <Filter>Elements\SpaceShip</Filter>
     </ClInclude>
-    <ClInclude Include="Credits.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Constants.h">
+      <Filter>Elements</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{26cfcd05-ffb2-438b-9c7b-c7537062c76d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Main Menu">
+      <UniqueIdentifier>{30acbb60-1dee-4b73-b030-1598be3ba6ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Game">
+      <UniqueIdentifier>{2f7c3959-41fe-4bd8-b608-f0fe06cbb80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Credits">
+      <UniqueIdentifier>{42445fb0-32d1-480c-b819-c8a2c748953b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elements">
+      <UniqueIdentifier>{372ca48b-bf9f-4db1-acd8-60d3aaaf7177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elements\Asteroid">
+      <UniqueIdentifier>{c0ba37a5-030e-42c1-82b3-bd9a445bb144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elements\SpaceShip">
+      <UniqueIdentifier>{8a3be3d5-1513-41b3-b98a-3202eb5e0c33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

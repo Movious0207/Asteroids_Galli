@@ -1,12 +1,15 @@
 #pragma once
 #include "SpaceShip.h"
 
-void AsteroidSpawner(Asteroid asteroids[], int& amount, float& spawnTime);
+namespace Asteroids
+{
+	void Spawner(Asteroid asteroids[], int& amount, float& spawnTime);
 
-float GetAsteroidRadius(AsteroidSize size);
+	void Split(Asteroid* asteroids, int index);
 
-void SplitAsteroid(Asteroid* asteroids, int index);
+	void Logic(Asteroid asteroids[], Bullet bullet[], int& score, Sound small, Sound medium, Sound big);
 
-void AsteroidLogic(Asteroid asteroids[], Bullet bullet[], int& score, Sound small, Sound medium, Sound big);
+	float GetRadius(AsteroidSize size);
 
-void AsteroidDraw(Asteroid asteroids[], Texture smallSlime, Texture mediumSlime, Texture bigSlime);
+	void Draw(Asteroid asteroids[], Texture smallSlime, Texture mediumSlime, Texture bigSlime);
+}

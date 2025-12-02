@@ -1,17 +1,23 @@
 #include "Game.h"
 
+static void Reset();
+
+static bool isPaused = false;
+static bool levelStart = true;
+static bool isPlaying = true;
+
 void Game(GameState& screen, Vector2& mouse, Texture background)
 {
-    Sound smallHit = LoadSound("res/smallHit.wav");
-    Sound mediumHit = LoadSound("res/mediumHit.wav");
-    Sound bigHit = LoadSound("res/bigHit.wav");
-    Sound shoot = LoadSound("res/shoot.wav");
-    Sound takeDmg = LoadSound("res/takeDmg.wav");
-    Texture fireball = LoadTexture("res/fireball.png");
-    Texture wizard = LoadTexture("res/wizard.png");
-    Texture smallSlime = LoadTexture("res/smallSlime.png");
-    Texture mediumSlime = LoadTexture("res/MediumSlime.png");
-    Texture bigSlime = LoadTexture("res/bigSlime.png");
+    static Sound smallHit = LoadSound("res/smallHit.wav");
+    static Sound mediumHit = LoadSound("res/mediumHit.wav");
+    static Sound bigHit = LoadSound("res/bigHit.wav");
+    static Sound shoot = LoadSound("res/shoot.wav");
+    static Sound takeDmg = LoadSound("res/takeDmg.wav");
+    static Texture fireball = LoadTexture("res/fireball.png");
+    static Texture wizard = LoadTexture("res/wizard.png");
+    static Texture smallSlime = LoadTexture("res/smallSlime.png");
+    static Texture mediumSlime = LoadTexture("res/MediumSlime.png");
+    static Texture bigSlime = LoadTexture("res/bigSlime.png");
 
     Asteroid asteroids[MAX_ASTEROIDS] = { 0 };
 
@@ -35,9 +41,6 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
     bool isInvinsible = false;
     int lives = 5;
     int score = 0;
-    bool isPaused = false;
-    bool levelStart = true;
-    bool isPlaying = true;
     int buttonWidth = screenWidth / 5;
     int buttonHeight = screenHeight / 12;
 
@@ -50,9 +53,9 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
             wizardRec.x = pos.x;
             wizardRec.y = pos.y;
 
-            AsteroidSpawner(asteroids, asteroidAmount, spawnTime);
+            Asteroids::Spawner(asteroids, asteroidAmount, spawnTime);
 
-            AsteroidLogic(asteroids, bullets, score, smallHit, mediumHit, bigHit);
+            Asteroids::Logic(asteroids, bullets, score, smallHit, mediumHit, bigHit);
 
             if (isPlaying)
             {
@@ -86,11 +89,6 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
                 isPaused = true;
             }
 
-            if (WindowShouldClose() && !isPaused)
-            {
-                screen = GameState::Quit;
-            }
-
             BeginDrawing();
 
             DrawTextureEx(background, { 0, 0 }, 0, 0.9, WHITE);
@@ -112,7 +110,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
             {
                 DrawText(TextFormat("Invisibility: %d", (int)respawnTimer), buttonWidth / 2, 5, 20, WHITE);
             }
-            AsteroidDraw(asteroids, smallSlime, mediumSlime, bigSlime);
+            Asteroids::Draw(asteroids, smallSlime, mediumSlime, bigSlime);
 
             EndDrawing();
         }
@@ -130,6 +128,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
                 if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
                 {
                     screen = GameState::Menu;
+                    Reset();
                 }
             }
 
@@ -137,10 +136,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
             {
                 isPaused = false;
             }
-            if (WindowShouldClose() && isPaused)
-            {
-                screen = GameState::Quit;
-            }
+
             BeginDrawing();
 
             DrawTextureEx(background, { 0, 0 }, 0, 0.9, WHITE);
@@ -152,7 +148,7 @@ void Game(GameState& screen, Vector2& mouse, Texture background)
                 DrawTexturePro(wizard, { 0,0,50,40 }, wizardRec, { 40,10 }, playerAngle - 5, WHITE);
             }
 
-            AsteroidDraw(asteroids,smallSlime, mediumSlime, bigSlime);
+            Asteroids::Draw(asteroids,smallSlime, mediumSlime, bigSlime);
 
             bulletDraw(bullets, fireball);
 
@@ -180,7 +176,7 @@ void Conditions(Vector2& pos,float radius,int& lives, Asteroid asteroids[], bool
             float distY = asteroids[i].position.y - pos.y;
             float distance_sq = (distX * distX) + (distY * distY);
 
-            bool colliding = distance_sq <= (radius + GetAsteroidRadius(asteroids[i].size)) * (radius + GetAsteroidRadius(asteroids[i].size));
+            bool colliding = distance_sq <= (radius + Asteroids::GetRadius(asteroids[i].size)) * (radius + Asteroids::GetRadius(asteroids[i].size));
             if (colliding)
             {
                 lives--;
@@ -201,4 +197,11 @@ void Conditions(Vector2& pos,float radius,int& lives, Asteroid asteroids[], bool
     {
         isPlaying = false;
     }
+}
+
+static void Reset()
+{
+    isPaused = false;
+    levelStart = true;
+    isPlaying = true;
 }
