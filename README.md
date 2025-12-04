@@ -25,7 +25,7 @@ You navigate the screens using the **Mouse** or you can also press **Escape** to
 
 ## How to Download
 
-First, download the SlimeSeason.zip file, either from the releases page in <a href="https://github.com/Movious0207/Slime_Season/releases">GitHub</a> or in <a href=>itch.io</a>
+First, download the SlimeSeason.zip file, either from the releases page in <a href="https://github.com/Movious0207/Slime_Season/releases">GitHub</a> or in <a href=https://movious.itch.io/slime-season>itch.io</a>
 
 then, unzip the file and open the .exe
 
