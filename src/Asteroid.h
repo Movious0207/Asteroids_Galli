@@ -1,5 +1,5 @@
 #pragma once
-#include "SpaceShip.h"
+#include "spaceShip.h"
 
 namespace Asteroids
 {

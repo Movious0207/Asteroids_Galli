@@ -1,4 +1,4 @@
-#include "Asteroid.h"
+#include "asteroid.h"
 
 static void Split(Asteroid* asteroids, int index);
 

@@ -1,4 +1,4 @@
-#include "Credits.h"
+#include "credits.h"
 
 void Credits::Logic(GameState& screen, Vector2& mouse, Texture background)
 {

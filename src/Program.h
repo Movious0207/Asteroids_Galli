@@ -1,9 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include "Game.h"
-#include "Menu.h"
-#include "Credits.h"
+#include "game.h"
+#include "menu.h"
+#include "credits.h"
 
 namespace program
 {

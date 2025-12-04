@@ -1,14 +1,24 @@
-#include "Menu.h"
+#include "menu.h"
 
 void Menu::Logic(GameState& screen, Vector2& mouse, Texture background)
 {
 	Texture titleCard = LoadTexture("res/titleCard.png");
+
+	Music menuMusic = LoadMusicStream("res/menuMusic.mp3");
+	SetMusicVolume(menuMusic, 1.0f);
 
 	float buttonWidth = screenWidth/5;
 	float buttonHeight = screenHeight/12;
 
 	while (screen == GameState::Menu)
 	{
+		if (!IsMusicStreamPlaying(menuMusic))
+		{
+			PlayMusicStream(menuMusic);
+		}
+
+		UpdateMusicStream(menuMusic);
+
 		mouse = GetMousePosition();
 
 		if (mouse.x > buttonWidth * 2 && mouse.x < buttonWidth * 3 && mouse.y >buttonHeight * 7 && mouse.y < buttonHeight * 8)

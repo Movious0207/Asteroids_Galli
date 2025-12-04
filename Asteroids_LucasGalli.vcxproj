@@ -19,22 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Asteroid.cpp" />
-    <ClCompile Include="src\Credits.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="src\Program.cpp" />
-    <ClCompile Include="src\SpaceShip.cpp" />
+    <ClCompile Include="src\asteroid.cpp" />
+    <ClCompile Include="src\credits.cpp" />
+    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\menu.cpp" />
+    <ClCompile Include="src\program.cpp" />
+    <ClCompile Include="src\spaceShip.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Asteroid.h" />
-    <ClInclude Include="src\Constants.h" />
-    <ClInclude Include="src\Credits.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Menu.h" />
-    <ClInclude Include="src\Program.h" />
-    <ClInclude Include="src\SpaceShip.h" />
+    <ClInclude Include="src\asteroid.h" />
+    <ClInclude Include="src\constants.h" />
+    <ClInclude Include="src\credits.h" />
+    <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\menu.h" />
+    <ClInclude Include="src\program.h" />
+    <ClInclude Include="src\spaceShip.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

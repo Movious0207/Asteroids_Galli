@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Menu.cpp">
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\menu.cpp">
       <Filter>Screens\Main Menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game.cpp">
+    <ClCompile Include="src\game.cpp">
       <Filter>Screens\Game</Filter>
     </ClCompile>
-    <ClCompile Include="src\Credits.cpp">
+    <ClCompile Include="src\credits.cpp">
       <Filter>Screens\Credits</Filter>
     </ClCompile>
-    <ClCompile Include="src\Asteroid.cpp">
+    <ClCompile Include="src\asteroid.cpp">
       <Filter>Elements\Asteroid</Filter>
     </ClCompile>
-    <ClCompile Include="src\SpaceShip.cpp">
+    <ClCompile Include="src\spaceShip.cpp">
       <Filter>Elements\SpaceShip</Filter>
     </ClCompile>
-    <ClCompile Include="src\Program.cpp" />
+    <ClCompile Include="src\program.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Menu.h">
+    <ClInclude Include="src\menu.h">
       <Filter>Screens\Main Menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game.h">
+    <ClInclude Include="src\game.h">
       <Filter>Screens\Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Credits.h">
+    <ClInclude Include="src\credits.h">
       <Filter>Screens\Credits</Filter>
     </ClInclude>
-    <ClInclude Include="src\Asteroid.h">
+    <ClInclude Include="src\asteroid.h">
       <Filter>Elements\Asteroid</Filter>
     </ClInclude>
-    <ClInclude Include="src\SpaceShip.h">
+    <ClInclude Include="src\spaceShip.h">
       <Filter>Elements\SpaceShip</Filter>
     </ClInclude>
-    <ClInclude Include="src\Constants.h">
+    <ClInclude Include="src\constants.h">
       <Filter>Elements</Filter>
     </ClInclude>
-    <ClInclude Include="src\Program.h" />
+    <ClInclude Include="src\program.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Screens">

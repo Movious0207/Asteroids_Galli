@@ -1,4 +1,4 @@
-#include "SpaceShip.h"
+#include "spaceShip.h"
 
 void player::Movement(Vector2& pos, float& radius, float& playerAngle, float acceleration,Vector2& direction,Vector2& normalDir, Vector2& velocity)
 {

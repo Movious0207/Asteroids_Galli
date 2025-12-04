@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Constants.h"
-#include "Asteroid.h"
+#include "constants.h"
+#include "asteroid.h"
 
 static Rectangle wizardRec = { 10,0,60,40 };
 

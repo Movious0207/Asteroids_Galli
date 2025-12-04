@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 static void Reset();
 static void Conditions(Vector2& pos, float radius, Asteroid asteroids[], int& amount, float& invisibleTime, Sound takeDmg);
@@ -16,6 +16,7 @@ void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
     static Sound bigHit = LoadSound("res/bigHit.wav");
     static Sound shoot = LoadSound("res/shoot.wav");
     static Sound takeDmg = LoadSound("res/takeDmg.wav");
+    static Music gameMusic = LoadMusicStream("res/gamePlay.mp3");
     static Texture fireball = LoadTexture("res/fireball.png");
     static Texture wizard = LoadTexture("res/wizard.png");
     static Texture smallSlime = LoadTexture("res/smallSlime.png");
@@ -49,6 +50,12 @@ void Game::GamePlay(GameState& screen, Vector2& mouse, Texture background)
 
     while (screen == GameState::Game)
     {
+        if (!IsMusicStreamPlaying(gameMusic))
+        {
+            PlayMusicStream(gameMusic);
+        }
+        UpdateMusicStream(gameMusic);
+
         mouse = GetMousePosition();
 
         if (WindowShouldClose())
