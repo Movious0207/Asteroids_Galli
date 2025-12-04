@@ -36,6 +36,7 @@ int program::Start()
             Credits::Logic(actualScreen, mouse, background);
             break;
         case GameState::Quit:
+
             CloseAudioDevice();
             CloseWindow();
             
@@ -47,4 +48,6 @@ int program::Start()
     }
     CloseAudioDevice();
     CloseWindow();
+
+    return 0;
 }

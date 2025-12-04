@@ -35,21 +35,21 @@ void Menu::Logic(GameState& screen, Vector2& mouse, Texture background)
 
 		BeginDrawing();
 
-		DrawTextureEx(background, { 0, 0 }, 0, 0.9, WHITE);
+		DrawTextureEx(background, { 0, 0 }, 0, 0.9f, WHITE);
 
-		DrawTextureEx(titleCard, { 100, 0 }, 0, 0.5, WHITE);
+		DrawTextureEx(titleCard, { 100, 0 }, 0, 0.5f, WHITE);
 
 		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 7), (int)buttonWidth, (int)buttonHeight, WHITE);
 
-		DrawText("Play", (int)(buttonWidth * 2.3), (int)(buttonHeight * 7.3), 20, BLACK);
+		DrawText("Play", (int)(buttonWidth * 2.3f), (int)(buttonHeight * 7.3f), 20, BLACK);
 
-		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 8.5), (int)buttonWidth, (int)buttonHeight, WHITE);
+		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 8.5f), (int)buttonWidth, (int)buttonHeight, WHITE);
 
-		DrawText("Credits", (int)(buttonWidth * 2.3), (int)(buttonHeight * 8.8), 20, BLACK);
+		DrawText("Credits", (int)(buttonWidth * 2.3f), (int)(buttonHeight * 8.8f), 20, BLACK);
 
 		DrawRectangle((int)(buttonWidth * 2), (int)(buttonHeight * 10), (int)buttonWidth, (int)buttonHeight, WHITE);
 
-		DrawText("Quit", (int)(buttonWidth * 2.3), (int)(buttonHeight * 10.3), 20, BLACK);
+		DrawText("Quit", (int)(buttonWidth * 2.3f), (int)(buttonHeight * 10.3f), 20, BLACK);
 
 		EndDrawing();
 

@@ -21,8 +21,8 @@ void Credits::Logic(GameState& screen, Vector2& mouse, Texture background)
 
 		BeginDrawing();
 		
-		DrawTextureEx(background, { 0,0}, 0, 0.9, WHITE);
-		DrawTextureEx(credits, { -80, 80 }, 0, 0.9, WHITE);
+		DrawTextureEx(background, { 0,0}, 0, 0.9f, WHITE);
+		DrawTextureEx(credits, { -80, 80 }, 0, 0.9f, WHITE);
 
 		DrawRectangle(10, 10, buttonSize, buttonSize, WHITE);
 		EndDrawing();
