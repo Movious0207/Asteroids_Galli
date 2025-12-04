@@ -22,5 +22,12 @@ This version includes the base game, with all its core features.
 #
 --Credits
 #
-Angie Tabasso (@BirritaDulce) Art.
-sound by myself using http://www.bfxr.net/
+Art
+
+all made by Angie Tabasso (@BirritaDulce).
+
+Sounds
+
+all sound effects by myself using http://www.bfxr.net/
+
+Music
