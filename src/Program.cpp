@@ -9,7 +9,7 @@ int program::Start()
 
     GameState actualScreen = GameState::Menu;
 
-    InitWindow(screenWidth, screenHeight, "Asteroids");
+    InitWindow(screenWidth, screenHeight, "Slime Season");
 
     InitAudioDevice();
 
