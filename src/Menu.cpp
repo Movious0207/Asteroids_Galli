@@ -61,6 +61,8 @@ void Menu::Logic(GameState& screen, Vector2& mouse, Texture background)
 
 		DrawText("Quit", (int)(buttonWidth * 2.3f), (int)(buttonHeight * 10.3f), 20, BLACK);
 
+		DrawText("V2.0", screenWidth - 100, 30, 20, WHITE);
+
 		EndDrawing();
 
 		if (WindowShouldClose())
